@@ -78,15 +78,15 @@ if you want realize one-shot VC, You should save the unseen speakers f0 paramete
 
 ## [Model structure]
 
- ![]([zcf28/StyleGAN-VC (github.com)](https://github.com/zcf28/StyleGAN-VC/fig/model.jpg)
+ [model.jpg](https://github.com/zcf28/StyleGAN-VC/fig/model.jpg)
 
 ## [Generator structure]
 
-![]([zcf28/StyleGAN-VC (github.com)](https://github.com/zcf28/StyleGAN-VC/fig/generator.jpg)
+[generator.jpg](https://github.com/zcf28/StyleGAN-VC/fig/generator.jpg)
 
 
 
-## [Reference](https://github.com/hujinsen/pytorch-StarGAN-VC)
+## [Reference]
 
 [tensorflow StarGAN-VC code](https://github.com/hujinsen/StarGAN-Voice-Conversion)
 
