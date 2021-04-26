@@ -78,11 +78,11 @@ if you want realize one-shot VC, You should save the unseen speakers f0 paramete
 
 ## [Model structure]
 
- [model.jpg](https://github.com/zcf28/StyleGAN-VC/fig/model.jpg)
+[](https://github.com/zcf28/StyleGAN-VC/blob/master/fig/generator.jpg)
 
 ## [Generator structure]
 
-[generator.jpg](https://github.com/zcf28/StyleGAN-VC/fig/generator.jpg)
+[](https://github.com/zcf28/StyleGAN-VC/blob/master/fig/model.jpg)
 
 
 
