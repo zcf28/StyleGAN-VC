@@ -34,7 +34,7 @@ The downloaded zip files are extracted to `vcc2020_database_training_source/sour
 The data directory now looks like this:
 
 ```
-data
+dataset/vcc2020
 ├── speakers  (training set)
 │   ├── SEF1
 │   ├── SEF2
@@ -78,11 +78,11 @@ if you want realize one-shot VC, You should save the unseen speakers f0 paramete
 
 ## [Model structure]
 
- ![](C:\Users\zcf\Desktop\pro\pro7\fig\model.jpg)
+ ![]([zcf28/StyleGAN-VC (github.com)](https://github.com/zcf28/StyleGAN-VC/fig/model.jpg)
 
 ## [Generator structure]
 
-![](C:\Users\zcf\Desktop\pro\pro7\fig\generator.jpg)
+![]([zcf28/StyleGAN-VC (github.com)](https://github.com/zcf28/StyleGAN-VC/fig/generator.jpg)
 
 
 
