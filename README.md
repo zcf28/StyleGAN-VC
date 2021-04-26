@@ -94,14 +94,25 @@ if you want realize one-shot VC, You should save the unseen speakers f0 paramete
 
 [CycleGAN-VC code](https://github.com/leimao/Voice_Converter_CycleGAN)
 
+[pytorch-StarGAN-VC code lsx](https://github.com/liusongxiang/StarGAN-Voice-Conversion)
 
-[pytorch-StarGAN-VC code](https://github.com/liusongxiang/StarGAN-Voice-Conversion)
+[pytorch-StarGAN-VC code hjs](https://github.com/hujinsen/pytorch-StarGAN-VC)
+
+[stargan-v2 code](https://github.com/clovaai/stargan-v2)
+
+[pytorch DyConv code](https://github.com/kaijieshi7/Dynamic-convolution-Pytorch)
 
 [StarGAN-VC paper](https://arxiv.org/abs/1806.02169)
 
+[AdaINGAN-VC](https://openreview.net/pdf?id=HJlk-eHFwH)
+
 [StarGAN paper](https://arxiv.org/abs/1806.02169)
 
+[StarGANv2 paper](https://arxiv.org/abs/1912.01865)
+
 [CycleGAN paper](https://arxiv.org/abs/1703.10593v4)
+
+[DyConv paper](https://arxiv.org/pdf/1912.03458.pdf)
 
 ---
 
