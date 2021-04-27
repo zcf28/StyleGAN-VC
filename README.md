@@ -96,11 +96,7 @@ if you want realize one-shot VC, You should save the unseen speakers f0 paramete
 
 [pytorch-StarGAN-VC code lsx](https://github.com/liusongxiang/StarGAN-Voice-Conversion)
 
-<<<<<<< HEAD
 [pytorch-StarGAN-VC code hjs](https://github.com/hujinsen/pytorch-StarGAN-VC)
-=======
-[pytorch-StarGAN-VC code hjs](https://github.com/hujinsen/pytorch-StarGAN-VC))
->>>>>>> 4b260c5199cbe6964578a827128241e7abcd7976
 
 [stargan-v2 code](https://github.com/clovaai/stargan-v2)
 
