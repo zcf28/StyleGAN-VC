@@ -1,31 +1,24 @@
 import os
-import time
 from datetime import datetime, timedelta
-
 import numpy as np
 import torch
 import torch.nn as nn
-
 from weight_init import weight_init
-
 from data_loader import TestSet
 from model import Discriminator, StyleEncoder, Generator
 from utility import Normalizer, speakers
 from preprocess import FRAMES, SAMPLE_RATE, FFTSIZE
 import random
-
 from pyworld import decode_spectral_envelope, synthesize
-
 import ast
 import soundfile
 
 class Solver(object):
     """docstring for Solver."""
     def __init__(self, data_loader, config):
-        
+
         self.config = config
         self.data_loader = data_loader
-        self.weight_init = True
 
         # Model configurations.
         self.num_domain = config.num_domains
@@ -52,8 +45,7 @@ class Solver(object):
         self.beta1 = config.beta1
         self.beta2 = config.beta2
         self.resume_iters = config.resume_iters
-
-        
+        self.weight_init = config.weight_init
 
         # Test configurations.
         self.test_iters = config.test_iters
@@ -85,7 +77,7 @@ class Solver(object):
     
     def build_model(self):
         self.G = Generator().to(self.device)
-        self.D = Discriminator(num_domains=self.num_domain).to(self.device)
+        self.D = Discriminator().to(self.device)
         self.S = StyleEncoder(num_domains=self.num_domain).to(self.device)
 
         if self.weight_init:
@@ -138,12 +130,8 @@ class Solver(object):
         # Learning rate cache for decaying.
         g_lr = self.g_lr
         d_lr = self.d_lr
-        s_lr = self.s_lr
 
         start_iters = 0
-        if self.resume_iters:
-            pass
-
         # Build the model and tensorboard.
         self.build_model()
 
@@ -168,8 +156,8 @@ class Solver(object):
 
             # Fetch labels.
             try:
-                # [B, D, T], [B], [B, C]
                 p1,  p2 = next(data_iter)
+
             except:
                 data_iter = iter(self.data_loader)
                 p1, p2 = next(data_iter)
@@ -242,7 +230,6 @@ class Solver(object):
                 g_loss_fake = g_loss_fake1 + g_loss_fake2
 
                 # Reconstruction(Cycle)
-
                 p1_2_1 = self.G(p1_2, style1)
                 g_loss_rec1 = self.mse_loss(p1_2_1, p1)
 
@@ -338,8 +325,8 @@ class Solver(object):
                         
             # Save model checkpoints.
             if (i+1) % self.model_save_step == 0:
-                G_path = os.path.join(self.model_save_dir, '{}-G.ckpt'.format(i+1))
-                D_path = os.path.join(self.model_save_dir, '{}-D.ckpt'.format(i+1))
+                G_path = os.path.join(self.model_save_dir, '{}-G.ckpt'.format(i + 1))
+                D_path = os.path.join(self.model_save_dir, '{}-D.ckpt'.format(i + 1))
                 S_path = os.path.join(self.model_save_dir, '{}-S.ckpt'.format(i + 1))
 
                 torch.save(self.G.state_dict(), G_path)
@@ -452,8 +439,6 @@ class Solver(object):
                     print(f'[save]:{path}')
                     # librosa.output.write_wav(path, wav, SAMPLE_RATE)
                     soundfile.write(path, wav, SAMPLE_RATE)
-
-
 
 if __name__ == '__main__':
 

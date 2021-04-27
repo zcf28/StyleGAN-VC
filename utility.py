@@ -25,7 +25,7 @@ class CommonInfo(metaclass=Singleton):
     @property
     def speakers(self):
         ''' return current selected speakers for training
-        eg. ['SF2', 'TM1', 'SF1', 'TM2']
+        eg. ['SEF2', 'SEF2', 'SEM1', 'SEM2']
         '''
         p = os.path.join(self.datadir, "*")
         all_sub_folder = glob.glob(p)

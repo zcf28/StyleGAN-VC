@@ -130,7 +130,7 @@ class ResBlockPreActivation1d(nn.Module):
 
 
 class StyleEncoder(nn.Module):
-    def __init__(self, mfcc_size=(36, 256), ch=64, n_intermediates=5, num_domains=8, dim_style=64):
+    def __init__(self, input_size=(36, 256), ch=64, n_intermediates=5, num_domains=8, dim_style=64):
         super(StyleEncoder, self).__init__()
 
         self.num_domains = num_domains
@@ -138,7 +138,7 @@ class StyleEncoder(nn.Module):
 
         layers = []
 
-        layers += [nn.Conv1d(mfcc_size[0], ch, 1)]
+        layers += [nn.Conv1d(input_size[0], ch, 1)]
 
         for n_intermediate in range(n_intermediates):
             if n_intermediate < n_intermediates - 1:
@@ -154,7 +154,7 @@ class StyleEncoder(nn.Module):
                     nn.AvgPool1d(2)
                 ]
 
-        activation_height = mfcc_size[1] // 2 ** n_intermediates  # 4
+        activation_height = input_size[1] // 2 ** n_intermediates  # 4
         layers += [
             nn.LeakyReLU(negative_slope=0.1),
             nn.Conv1d(ch, ch, activation_height, 1, 0), # Conv4x4 4->1
@@ -179,7 +179,7 @@ class StyleEncoder(nn.Module):
 
 class Generator(nn.Module):
     """Generator network."""
-    def __init__(self, conv_dim=128, style_dim=64, repeat_num=8, growth_rate=32):
+    def __init__(self, conv_dim=128, style_dim=64, repeat_num=8):
         super(Generator, self).__init__()
 
         num_of_inputs_list = []
@@ -227,7 +227,7 @@ class Generator(nn.Module):
 
 class Discriminator(nn.Module):
     """Discriminator network with PatchGAN."""
-    def __init__(self, input_size=(36, 256), conv_dim=64, repeat_num=5, num_domains=8):
+    def __init__(self, input_size=(36, 256), conv_dim=64, repeat_num=5):
         super(Discriminator, self).__init__()
         layers = []
         layers.append(nn.Conv2d(1, conv_dim, kernel_size=4, stride=2, padding=1))

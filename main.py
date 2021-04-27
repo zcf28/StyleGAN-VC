@@ -5,10 +5,6 @@ from data_loader import data_loader
 from torch.backends import cudnn
 
 
-def str2bool(v):
-    return v.lower() in ('true')
-
-
 def main(config):
     # For fast training.
     cudnn.benchmark = True
@@ -24,7 +20,6 @@ def main(config):
         os.makedirs(config.result_dir)
 
     # Data loader.
-    
     loader = data_loader(config.data_dir, batch_size=config.batch_size, num_workers=config.num_workers)
 
     # Solver for training and testing StarGAN.
@@ -42,9 +37,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
 
     # Model configuration.
-
     parser.add_argument('--num_domains', type=int, default=4, help='dimension of speaker labels')
-    parser.add_argument('--gender_domain', action='store_true',help='whether to use gender as domain, in this case the num_speakers should be 2')
     parser.add_argument('--dim_style', type=int, default=64, help='dimension of style embedding')
     parser.add_argument('--dim_latent', type=int, default=16, help='dimension of latent code')
     parser.add_argument('--lambda_rec', type=float, default=10, help='weight for reconstruction loss')
@@ -63,8 +56,7 @@ if __name__ == '__main__':
     parser.add_argument('--beta1', type=float, default=0.5, help='beta1 for Adam optimizer')
     parser.add_argument('--beta2', type=float, default=0.999, help='beta2 for Adam optimizer')
     parser.add_argument('--resume_iters', type=int, default=None, help='resume training from this step')
-    
-    
+    parser.add_argument('--weight_init', type=bool, default=True, help='initialize model parameters')
 
     # Test configuration.
     parser.add_argument('--test_iters', type=int, default=200000, help='test model from this step')
@@ -74,7 +66,7 @@ if __name__ == '__main__':
     # Miscellaneous.
     parser.add_argument('--num_workers', type=int, default=10)
     parser.add_argument('--mode', type=str, default='train', choices=['train', 'test'])
-    parser.add_argument('--use_tensorboard', type=str2bool, default=True)
+    parser.add_argument('--use_tensorboard', type=bool, default=True)
 
     # Directories.
     parser.add_argument('--data_dir', type=str, default='dataset/processed_256/')
@@ -93,4 +85,3 @@ if __name__ == '__main__':
     config = parser.parse_args()
     print(config)
     main(config)
-    
